@@ -1,0 +1,48 @@
+﻿@model List<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Roles</h2>
+<div>
+    <a href="/Roles/Create">Creat new role</a>
+    <form method="post" asp-action="Create" id="form-create-role">
+        <input placeholder="Name" name="Name" />
+        <input type="submit" value="Create" />
+    </form>
+    <form method="post" asp-action="Edit" id="form-edit-role" style="display: none">
+        <input placeholder="Name" name="Name" id="input-edit-role"/>
+        <input name="Id" id="input-edit-role-id" style="display: none"/>
+        <input type="submit" value="Accept" />
+        <button type="button" id="btn-cancle-edit-role">Cancle</button>
+    </form>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>Normalized Name</th>
+            <th>Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model)
+            {
+                <tr>
+                    <td style="display: none">@role.Id</td>
+                    <td></td>
+                    <td>@role.Name</td>
+                    <td>@role.NormalizedName</td>
+                    <td>
+                        <button class="btn-edit-role">Edit</button>
+                        <button class="btn-delete-role">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
